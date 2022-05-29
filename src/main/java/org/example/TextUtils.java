@@ -9,12 +9,13 @@ import java.util.regex.Pattern;
 public class TextUtils {
     private static final String WORD_PATTERN = "[a-zA-Z]+";
 
-    static void printDirection(int lineNumber,int count, int wordLength) {
-        StringBuilder sb1 = new StringBuilder();
-        for (int i = lineNumber; i > 0; lineNumber %= 10) {
-            char symbol = ' ';
-            sb1.append(symbol);
-        }
+    public TextUtils() {System.out.println("           --- Welcome ---");}
+
+    private void printDirection(int lineNumber,int count, int wordLength) {
+        final StringBuilder sb1 = new StringBuilder();
+//        for (int i = lineNumber; i > 1; i %= 10) {
+//            sb1.append(' ');
+//        }
         for (int i = 0; i < count; i++) {
             char symbol = '-';
             sb1.append(symbol);
@@ -26,7 +27,7 @@ public class TextUtils {
         System.out.println(sb1);
     }
 
-    static void findWordInFile(String mod, BufferedReader filescan, String word) {
+   void findWordInFile(String mod, BufferedReader filescan, String word) {
         checkWordIsValid(word);
         String line;
         int linePosition = 1;
@@ -47,14 +48,14 @@ public class TextUtils {
         }
     }
 
-    static void findWordInLinebyChar(int lineNumber,String fileLine, String word) {
+   private void findWordInLinebyChar(int lineNumber,String fileLine, String word) {
         Matcher matcher = Pattern.compile("\\b" + word + "\\b").matcher(fileLine);
         while (matcher.find()) System.out.println(fileLine);
         int position = fileLine.indexOf(word);
         printDirection(lineNumber,position, word.length());
     }
 
-    static void findWordInLine(int lineNumber, String fileLine, String word) {
+    private void findWordInLine(int lineNumber, String fileLine, String word) {
         if (fileLine.contains(word)) {
             System.out.println(lineNumber + fileLine);
             int position = fileLine.indexOf(word);
@@ -62,7 +63,7 @@ public class TextUtils {
         }
     }
 
-    static void checkWordIsValid(String wordToCheck) throws IllegalArgumentException {
+    private void checkWordIsValid(String wordToCheck) throws IllegalArgumentException {
         if (Objects.equals(wordToCheck, "") || (!wordToCheck.matches(WORD_PATTERN)))
             throw new IllegalArgumentException("Please enter a valid word!");
     }

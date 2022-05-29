@@ -9,7 +9,7 @@ public class App {
         String fileName = args[1];
         String mod = args[2];
 
-        System.out.println("           --- Welcome ---");
+
 
         BufferedReader reader = null;
 
@@ -19,7 +19,8 @@ public class App {
                 throw new RuntimeException("File not found");
             }
             reader = new BufferedReader(new FileReader(file));
-            TextUtils.findWordInFile(mod, reader, word);
+            TextUtils tu= new TextUtils();
+            tu.findWordInFile(mod, reader, word);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
