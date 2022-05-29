@@ -15,7 +15,6 @@ public class App {
 
         try {
             File file = new File(fileName);
-            StringBuilder builder = new StringBuilder();
             if (!file.exists()) {
                 throw new RuntimeException("File not found");
             }
